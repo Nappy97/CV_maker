@@ -27,5 +27,11 @@ public class CV extends BaseEntity {
     private Member member;
 
     @OneToMany(mappedBy = "cv", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<CVPersonalInfo> cvPersonalInfos = new ArrayList<>();
+
+    @OneToMany(mappedBy = "cv", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<CVDetails> cvDetails = new ArrayList<>();
+
+
+
 }
