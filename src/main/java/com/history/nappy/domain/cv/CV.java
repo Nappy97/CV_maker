@@ -2,6 +2,7 @@ package com.history.nappy.domain.cv;
 
 import com.history.nappy.domain.BaseEntity;
 import com.history.nappy.domain.member.Member;
+import com.history.nappy.dto.cv.CVFormDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,12 +27,16 @@ public class CV extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "cv", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<CVPersonalInfo> cvPersonalInfos = new ArrayList<>();
+    @Column(nullable = false, length = 100)
+    private String name;
 
-    @OneToMany(mappedBy = "cv", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<CVDetails> cvDetails = new ArrayList<>();
+    @Enumerated(EnumType.STRING)
+    private CVType cvType;
 
-
+    // 수정
+    public void updateCv(CVFormDto cvFormDto) {
+        this.name = cvFormDto.getName();
+        this.cvType = cvFormDto.getCvType();
+    }
 
 }
