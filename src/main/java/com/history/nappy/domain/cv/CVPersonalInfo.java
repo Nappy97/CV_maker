@@ -37,6 +37,4 @@ public class CVPersonalInfo extends BaseEntity {
     private String major;
 
     private String graduationStatus;
-
-
 }

@@ -8,15 +8,14 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "cv_detail")
+@Table(name = "cv_skills")
 @Getter
 @Setter
-public class CVDetails extends BaseEntity {
+public class CVSkills extends BaseEntity {
 
-    // 자기소개
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "cv_detail_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "cv_skills_id")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -27,14 +26,13 @@ public class CVDetails extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
-    @Column(nullable = false, length = 100)
-    private String title;
+    private String type;
 
-    @Lob
-    private String content;
+    private String name;    // 스킬이름
 
-    public void updateCVDetails(String title, String content) {
-        this.title = title;
-        this.content = content;
+
+    public void updateCVSkills(String type, String name) {
+        this.type = type;
+        this.name = name;
     }
 }
