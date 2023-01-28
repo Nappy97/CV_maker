@@ -3,7 +3,7 @@ package com.history.nappy.service.cv;
 import com.history.nappy.domain.cv.CVImg;
 import com.history.nappy.repository.cv.CVImgRepository;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;

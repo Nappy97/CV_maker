@@ -19,15 +19,4 @@ public class CVService {
     private final CVDetailsRepository cvDetailsRepository;
     private final MemberRepository memberRepository;
 
-    // CV detail 추가
-    public Long addDetail(CVDetailsDto cvDetailsDto, String username){
-
-        Member member = memberRepository.findByUsername(username);
-        CV cv = cvRepository.findByMemberId(member.getId());
-
-        // 비어있나요?
-        if (cv == null){
-
-        }
-    }
 }

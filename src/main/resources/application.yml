@@ -20,3 +20,7 @@ spring:
     thymeleaf:
       cache: false
 
+
+cvImgLocation: /Users/Nappy/study/cv
+
+uploadPath: file:///Users/Nappy/study/
