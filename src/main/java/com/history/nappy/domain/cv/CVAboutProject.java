@@ -34,10 +34,10 @@ public class CVAboutProject extends BaseEntity {
     @Lob
     private String intro;   // 짧게 소개
 
-    @DateTimeFormat(pattern = )
+    @DateTimeFormat(pattern = "yyyy.MM.dd")
     private LocalDateTime startedDate;
 
-    @DateTimeFormat
+    @DateTimeFormat(pattern = "yyyy.MM.dd")
     private LocalDateTime completionDate;
 
     private int numOfMembers;

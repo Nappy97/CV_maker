@@ -19,6 +19,4 @@ public class CVFormDto {
     private String name;
 
     private CVType cvType;
-
-
 }
