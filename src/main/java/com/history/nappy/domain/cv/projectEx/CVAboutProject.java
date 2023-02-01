@@ -1,6 +1,7 @@
-package com.history.nappy.domain.cv;
+package com.history.nappy.domain.cv.projectEx;
 
 import com.history.nappy.domain.BaseEntity;
+import com.history.nappy.domain.cv.CV;
 import com.history.nappy.domain.member.Member;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,10 +20,6 @@ public class CVAboutProject extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "cv_about_project_id")
     private Long id;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cv_id")
-    private CV cv;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
@@ -50,4 +47,5 @@ public class CVAboutProject extends BaseEntity {
 
     @Lob
     private String references;  // 참고자료
+
 }
