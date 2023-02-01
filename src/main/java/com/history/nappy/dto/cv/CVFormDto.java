@@ -1,9 +1,11 @@
 package com.history.nappy.dto.cv;
 
+import com.history.nappy.domain.cv.CV;
 import com.history.nappy.domain.cv.CVType;
 import com.history.nappy.domain.member.Member;
 import lombok.Getter;
 import lombok.Setter;
+import org.modelmapper.ModelMapper;
 
 import javax.validation.constraints.NotBlank;
 
@@ -19,4 +21,10 @@ public class CVFormDto {
     private String name;
 
     private CVType cvType;
+
+    private static ModelMapper modelMapper = new ModelMapper();
+
+    public CV createCV() {
+        return modelMapper.map(this, CV.class);
+    }
 }
