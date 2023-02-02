@@ -1,7 +1,8 @@
 package com.history.nappy.repository.cv.projectList;
 
-import com.history.nappy.domain.cv.projectList.CVAboutProject;
-import com.history.nappy.domain.cv.projectList.QCVAboutProject;
+import com.history.nappy.domain.cv.CVAboutProject;
+import com.history.nappy.domain.cv.QCVAboutProject;
+import com.history.nappy.domain.member.Member;
 import com.history.nappy.dto.cv.CVSearchDto;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -43,28 +44,22 @@ public class CVAboutProjectCustomImpl implements CVAboutProjectCustom {
     }
 
     // 제목검색
-    private BooleanExpression searchByTitleLike(String searchBy, String searchQuery) {
-        if (StringUtils.equals("title", searchBy)) {
-            return QCVAboutProject.cVAboutProject.title.like("%" + searchQuery + "%");
-        }
-        return null;
+    private BooleanExpression searchByTitleLike(String searchQuery) {
+        return QCVAboutProject.cVAboutProject.title.like("%" + searchQuery + "%");
     }
 
     // 작성자
-    private BooleanExpression usernameLike(String searchBy, String searchQuery){
-        if (StringUtils.equals("createdBy", searchBy)){
-            return QCVAboutProject.cVAboutProject.createdBy.like(("%" + searchQuery + "%"));
-        }
-        return null;
+    private BooleanExpression usernameLike(String username) {
+        return QCVAboutProject.cVAboutProject.member.username.like(("%" + username + "%"));
     }
 
     @Override
-    public Page<CVAboutProject> getMainCVAboutProjectList(CVSearchDto cvSearchDto, Pageable pageable) {
+    public Page<CVAboutProject> getMainCVAboutProjectList(CVSearchDto cvSearchDto, Pageable pageable, String username) {
         QueryResults<CVAboutProject> results = queryFactory
                 .selectFrom(QCVAboutProject.cVAboutProject)
                 .where(regDtsAfter(cvSearchDto.getSearchDateType()),
-                        searchByTitleLike(cvSearchDto.getSearchBy(), cvSearchDto.getSearchQuery()),
-                        usernameLike(cvSearchDto.getSearchBy(), cvSearchDto.getSearchQuery()))
+                        searchByTitleLike(cvSearchDto.getSearchQuery()),
+                        usernameLike(username))
                 .orderBy(QCVAboutProject.cVAboutProject.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -78,4 +73,5 @@ public class CVAboutProjectCustomImpl implements CVAboutProjectCustom {
 
         return new PageImpl<>(content, pageable, total);
     }
+
 }

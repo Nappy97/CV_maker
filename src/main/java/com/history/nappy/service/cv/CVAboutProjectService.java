@@ -1,7 +1,8 @@
 package com.history.nappy.service.cv;
 
-import com.history.nappy.domain.cv.projectList.CVAboutProject;
-import com.history.nappy.dto.cv.projectList.CVAboutProjectDto;
+import com.history.nappy.domain.cv.CVAboutProject;
+import com.history.nappy.domain.member.Member;
+import com.history.nappy.dto.cv.CVAboutProjectDto;
 import com.history.nappy.dto.cv.CVSearchDto;
 import com.history.nappy.repository.cv.projectList.CVAboutProjectRepository;
 import com.history.nappy.repository.member.MemberRepository;
@@ -32,8 +33,8 @@ public class CVAboutProjectService {
 
     // 목록조회
     @Transactional(readOnly = true)
-    public Page<CVAboutProject> getMainCVAboutProjectList(CVSearchDto cvSearchDto, Pageable pageable) {
-        return cvAboutProjectRepository.getMainCVAboutProjectList(cvSearchDto, pageable);
+    public Page<CVAboutProject> getMainCVAboutProjectList(CVSearchDto cvSearchDto, Pageable pageable, String username) {
+        return cvAboutProjectRepository.getMainCVAboutProjectList(cvSearchDto, pageable, username);
     }
 
     // 수정
@@ -44,4 +45,5 @@ public class CVAboutProjectService {
 
         return cvAboutProject.getId();
     }
+
 }
