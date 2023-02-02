@@ -1,10 +1,9 @@
 package com.history.nappy.service.cv;
 
-import com.history.nappy.domain.cv.projectEx.CVAboutProject;
-import com.history.nappy.domain.member.Member;
-import com.history.nappy.dto.cv.CVAboutProjectDto;
-import com.history.nappy.dto.cv.CVAboutProjectSearchDto;
-import com.history.nappy.repository.cv.CVAboutProjectRepository;
+import com.history.nappy.domain.cv.projectList.CVAboutProject;
+import com.history.nappy.dto.cv.projectList.CVAboutProjectDto;
+import com.history.nappy.dto.cv.CVSearchDto;
+import com.history.nappy.repository.cv.projectList.CVAboutProjectRepository;
 import com.history.nappy.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -12,7 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.IOException;
+import javax.persistence.EntityNotFoundException;
 
 @Service
 @RequiredArgsConstructor
@@ -33,7 +32,16 @@ public class CVAboutProjectService {
 
     // 목록조회
     @Transactional(readOnly = true)
-    public Page<CVAboutProject> getMainCVAboutProjectList(CVAboutProjectSearchDto cvAboutProjectSearchDto, Pageable pageable) {
-        return cvAboutProjectRepository.getMainCVAboutProjectList(cvAboutProjectSearchDto, pageable);
+    public Page<CVAboutProject> getMainCVAboutProjectList(CVSearchDto cvSearchDto, Pageable pageable) {
+        return cvAboutProjectRepository.getMainCVAboutProjectList(cvSearchDto, pageable);
+    }
+
+    // 수정
+    public Long updateCVAboutProject(CVAboutProjectDto cvAboutProjectDto) {
+
+        CVAboutProject cvAboutProject = cvAboutProjectRepository.findById(cvAboutProjectDto.getId()).orElseThrow(EntityNotFoundException::new);
+        cvAboutProject.updateCVAboutProject(cvAboutProjectDto);
+
+        return cvAboutProject.getId();
     }
 }

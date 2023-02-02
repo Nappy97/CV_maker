@@ -1,7 +1,6 @@
-package com.history.nappy.dto.cv;
+package com.history.nappy.dto.cv.projectList;
 
-import com.history.nappy.domain.cv.CV;
-import com.history.nappy.domain.cv.projectEx.CVAboutProject;
+import com.history.nappy.domain.cv.projectList.CVAboutProject;
 import com.history.nappy.domain.member.Member;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,8 +12,6 @@ import java.time.LocalDateTime;
 @Setter
 public class CVAboutProjectDto {
 
-    private Long id;
-    private Member member;
     private String title;
     private String intro;
     private LocalDateTime startedDate;
@@ -29,5 +26,10 @@ public class CVAboutProjectDto {
     // DTO -> Entity
     public CVAboutProject createCVAboutProject() {
         return modelMapper.map(this, CVAboutProject.class);
+    }
+
+    // Entity -> DTO
+    public static CVAboutProjectDto of(CVAboutProject cvAboutProject) {
+        return modelMapper.map(cvAboutProject, CVAboutProjectDto.class);
     }
 }

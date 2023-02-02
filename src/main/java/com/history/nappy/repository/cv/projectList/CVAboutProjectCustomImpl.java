@@ -1,8 +1,8 @@
-package com.history.nappy.repository.cv;
+package com.history.nappy.repository.cv.projectList;
 
-import com.history.nappy.domain.cv.projectEx.CVAboutProject;
-import com.history.nappy.domain.cv.projectEx.QCVAboutProject;
-import com.history.nappy.dto.cv.CVAboutProjectSearchDto;
+import com.history.nappy.domain.cv.projectList.CVAboutProject;
+import com.history.nappy.domain.cv.projectList.QCVAboutProject;
+import com.history.nappy.dto.cv.CVSearchDto;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -50,12 +50,21 @@ public class CVAboutProjectCustomImpl implements CVAboutProjectCustom {
         return null;
     }
 
+    // 작성자
+    private BooleanExpression usernameLike(String searchBy, String searchQuery){
+        if (StringUtils.equals("createdBy", searchBy)){
+            return QCVAboutProject.cVAboutProject.createdBy.like(("%" + searchQuery + "%"));
+        }
+        return null;
+    }
+
     @Override
-    public Page<CVAboutProject> getMainCVAboutProjectList(CVAboutProjectSearchDto cvAboutProjectSearchDto, Pageable pageable) {
+    public Page<CVAboutProject> getMainCVAboutProjectList(CVSearchDto cvSearchDto, Pageable pageable) {
         QueryResults<CVAboutProject> results = queryFactory
                 .selectFrom(QCVAboutProject.cVAboutProject)
-                .where(regDtsAfter(cvAboutProjectSearchDto.getSearchDateType()),
-                        searchByTitleLike(cvAboutProjectSearchDto.getSearchBy(), cvAboutProjectSearchDto.getSearchQuery()))
+                .where(regDtsAfter(cvSearchDto.getSearchDateType()),
+                        searchByTitleLike(cvSearchDto.getSearchBy(), cvSearchDto.getSearchQuery()),
+                        usernameLike(cvSearchDto.getSearchBy(), cvSearchDto.getSearchQuery()))
                 .orderBy(QCVAboutProject.cVAboutProject.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())

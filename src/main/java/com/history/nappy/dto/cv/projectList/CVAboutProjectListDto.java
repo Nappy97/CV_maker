@@ -1,19 +1,17 @@
-package com.history.nappy.dto.cv;
+package com.history.nappy.dto.cv.projectList;
 
-import com.history.nappy.domain.cv.CV;
-import com.history.nappy.domain.member.Member;
-import com.querydsl.core.annotations.QueryProjection;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Lob;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 public class CVAboutProjectListDto {
 
-    private Long id;
-    private Member member;
+    private Long cvAboutProjectId;
     private String title;
     private String intro;
     private LocalDateTime startedDate;
@@ -23,10 +21,10 @@ public class CVAboutProjectListDto {
     private String takeaway;
     private String references;
 
-    @QueryProjection
-    public CVAboutProjectListDto(Long id, String title, String intro, LocalDateTime startedDate, LocalDateTime completionDate,
+    public CVAboutProjectListDto(Long cvAboutProjectId, String title, String intro,
+                                 LocalDateTime startedDate, LocalDateTime completionDate,
                                  int numOfMembers, String content, String takeaway, String references) {
-        this.id = id;
+        this.cvAboutProjectId = cvAboutProjectId;
         this.title = title;
         this.intro = intro;
         this.startedDate = startedDate;

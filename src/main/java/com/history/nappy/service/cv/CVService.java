@@ -2,10 +2,9 @@ package com.history.nappy.service.cv;
 
 import com.history.nappy.domain.cv.CV;
 import com.history.nappy.domain.cv.CVImg;
-import com.history.nappy.domain.member.Member;
-import com.history.nappy.dto.cv.CVDetailsDto;
 import com.history.nappy.dto.cv.CVFormDto;
 import com.history.nappy.repository.cv.*;
+import com.history.nappy.repository.cv.projectList.CVAboutProjectRepository;
 import com.history.nappy.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
