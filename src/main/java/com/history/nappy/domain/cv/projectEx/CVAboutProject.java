@@ -3,6 +3,7 @@ package com.history.nappy.domain.cv.projectEx;
 import com.history.nappy.domain.BaseEntity;
 import com.history.nappy.domain.cv.CV;
 import com.history.nappy.domain.member.Member;
+import com.history.nappy.dto.cv.CVAboutProjectDto;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -48,4 +49,15 @@ public class CVAboutProject extends BaseEntity {
     @Lob
     private String references;  // 참고자료
 
+    // 수정
+    public void updateCVAboutProject(CVAboutProjectDto cvAboutProjectDto){
+        this.title = cvAboutProjectDto.getTitle();
+        this.intro = cvAboutProjectDto.getIntro();
+        this.startedDate = cvAboutProjectDto.getStartedDate();
+        this.completionDate = cvAboutProjectDto.getCompletionDate();
+        this.numOfMembers = cvAboutProjectDto.getNumOfMembers();
+        this.content = cvAboutProjectDto.getContent();
+        this.takeaway = cvAboutProjectDto.getTakeaway();
+        this.references = cvAboutProjectDto.getReferences();
+    }
 }
