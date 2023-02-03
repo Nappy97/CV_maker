@@ -1,4 +1,4 @@
-package com.history.nappy.service.cv;
+package com.history.nappy.service.cv.personalInfo;
 
 import org.springframework.stereotype.Service;
 

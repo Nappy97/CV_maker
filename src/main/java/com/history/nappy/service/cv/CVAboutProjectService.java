@@ -4,18 +4,14 @@ import com.history.nappy.domain.cv.aboutProject.CVAboutProject;
 import com.history.nappy.domain.cv.aboutProject.CVAboutProjectList;
 import com.history.nappy.domain.member.Member;
 import com.history.nappy.dto.cv.aboutProject.CVAboutProjectDto;
-import com.history.nappy.dto.cv.CVSearchDto;
 import com.history.nappy.dto.cv.aboutProject.CVAboutProjectListDto;
 import com.history.nappy.repository.cv.projectList.CVAboutProjectListRepository;
 import com.history.nappy.repository.cv.projectList.CVAboutProjectRepository;
 import com.history.nappy.repository.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,8 +35,7 @@ public class CVAboutProjectService {
             cvAboutProjectListRepository.save(cvAboutProjectList);
         }
 
-        CVAboutProject cvAboutProject = cvAboutProjectRepository.findByCvAboutProjectListId(cvAboutProjectList.getId());
-
+        CVAboutProject cvAboutProject;
         cvAboutProject = CVAboutProject.createCVAboutProject(cvAboutProjectList, cvAboutProjectDto.getTitle(),
                 cvAboutProjectDto.getIntro(), cvAboutProjectDto.getStartedDate(), cvAboutProjectDto.getCompletionDate(),
                 cvAboutProjectDto.getNumOfMembers(), cvAboutProjectDto.getContent(), cvAboutProjectDto.getTakeaway(),

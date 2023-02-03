@@ -1,4 +1,4 @@
-package com.history.nappy.service.cv;
+package com.history.nappy.service.cv.personalInfo;
 
 import com.history.nappy.domain.cv.personalInfo.CVImg;
 import com.history.nappy.repository.cv.CVImgRepository;

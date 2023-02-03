@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface CVAboutProjectRepository extends JpaRepository<CVAboutProject, Long>, CVAboutProjectCustom {
 
-    CVAboutProject findByCvAboutProjectListId(Long cvAboutProjectId);
+//    CVAboutProject findByCvAboutProjectListId(Long cvAboutProjectListId);
 
     @Query("select new com.history.nappy.dto.cv.aboutProject.CVAboutProjectListDto(" +
             "ap.id, ap.title, ap.intro, ap.startedDate, ap.completionDate, ap.numOfMembers," +
