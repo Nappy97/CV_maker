@@ -1,6 +1,7 @@
-package com.history.nappy.repository.cv;
+package com.history.nappy.repository.cv.details;
 
 import com.history.nappy.domain.cv.CVDetails;
+import com.history.nappy.domain.cv.QCVAboutProject;
 import com.history.nappy.domain.cv.QCVDetails;
 import com.history.nappy.dto.cv.CVSearchDto;
 import com.querydsl.core.QueryResults;
@@ -51,12 +52,18 @@ public class CVDetailsCustomImpl implements CVDetailsCustom {
         return null;
     }
 
+    // 작성자
+    private BooleanExpression usernameLike(String username) {
+        return QCVDetails.cVDetails.member.username.like(("%" + username + "%"));
+    }
+
     @Override
-    public Page<CVDetails> getMainCVDetailsList(CVSearchDto cvSearchDto, Pageable pageable) {
+    public Page<CVDetails> getMainCVDetailsList(CVSearchDto cvSearchDto, Pageable pageable, String username) {
         QueryResults<CVDetails> results = queryFactory
                 .selectFrom(QCVDetails.cVDetails)
                 .where(regDtsAfter(cvSearchDto.getSearchDateType()),
-                        searchByTitleAndContentLike(cvSearchDto.getSearchBy(), cvSearchDto.getSearchQuery()))
+                        searchByTitleAndContentLike(cvSearchDto.getSearchBy(), cvSearchDto.getSearchQuery()),
+                        usernameLike(username))
                 .orderBy(QCVDetails.cVDetails.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())

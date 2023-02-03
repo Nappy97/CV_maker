@@ -1,4 +1,4 @@
-package com.history.nappy.repository.cv;
+package com.history.nappy.repository.cv.details;
 
 import com.history.nappy.domain.cv.CVDetails;
 import com.history.nappy.dto.cv.CVSearchDto;
@@ -7,5 +7,5 @@ import org.springframework.data.domain.Pageable;
 
 public interface CVDetailsCustom {
 
-    Page<CVDetails> getMainCVDetailsList(CVSearchDto cvSearchDto, Pageable pageable);
+    Page<CVDetails> getMainCVDetailsList(CVSearchDto cvSearchDto, Pageable pageable, String username);
 }

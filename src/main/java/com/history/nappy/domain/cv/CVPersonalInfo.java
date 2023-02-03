@@ -2,6 +2,7 @@ package com.history.nappy.domain.cv;
 
 import com.history.nappy.domain.BaseEntity;
 import com.history.nappy.domain.member.Member;
+import com.history.nappy.dto.cv.CVPersonalInfoDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,10 +21,6 @@ public class CVPersonalInfo extends BaseEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cv_id")
-    private CV cv;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
 
@@ -37,4 +34,13 @@ public class CVPersonalInfo extends BaseEntity {
     private String major;
 
     private String graduationStatus;
+
+    // 수정
+    public void updateCVPersonalInfo(CVPersonalInfoDto cvPersonalInfoDto) {
+        this.educatedStart = cvPersonalInfoDto.getEducatedStart();
+        this.educatedEnd = cvPersonalInfoDto.getEducatedEnd();
+        this.schoolName = cvPersonalInfoDto.getSchoolName();
+        this.major = cvPersonalInfoDto.getMajor();
+        this.graduationStatus = cvPersonalInfoDto.getGraduationStatus();
+    }
 }

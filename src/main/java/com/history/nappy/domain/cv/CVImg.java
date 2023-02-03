@@ -26,8 +26,8 @@ public class CVImg extends BaseEntity {
     private String repimgYn; //대표 이미지 여부
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cv_id")
-    private CV cv;
+    @JoinColumn(name = "cv_personal_info_id")
+    private CVPersonalInfo cvPersonalInfo;
 
     public void updateCVImg(String oriImgName, String imgName, String imgUrl) {
         this.oriImgName = oriImgName;
