@@ -1,6 +1,7 @@
-package com.history.nappy.domain.cv;
+package com.history.nappy.domain.cv.skills;
 
 import com.history.nappy.domain.BaseEntity;
+import com.history.nappy.domain.cv.aboutProject.CVAboutProjectList;
 import com.history.nappy.domain.member.Member;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,10 +23,23 @@ public class CVSkills extends BaseEntity {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cv_skills_list_id")
+    private CVSkillsList cvSkillsList;
+
     private String type;
 
     private String name;    // 스킬이름
 
+    public static CVSkills createCVSkills(CVSkillsList cvSkillsList, Member member,
+                                          String type, String name) {
+        CVSkills cvSkills = new CVSkills();
+        cvSkills.setCvSkillsList(cvSkillsList);
+        cvSkills.setMember(member);
+        cvSkills.setType(type);
+        cvSkills.setName(name);
+        return cvSkills;
+    }
 
     public void updateCVSkills(String type, String name) {
         this.type = type;

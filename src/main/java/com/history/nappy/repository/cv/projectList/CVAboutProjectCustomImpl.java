@@ -1,8 +1,7 @@
 package com.history.nappy.repository.cv.projectList;
 
-import com.history.nappy.domain.cv.CVAboutProject;
+import com.history.nappy.domain.cv.aboutProject.CVAboutProject;
 import com.history.nappy.domain.cv.QCVAboutProject;
-import com.history.nappy.domain.member.Member;
 import com.history.nappy.dto.cv.CVSearchDto;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;

@@ -1,7 +1,7 @@
 package com.history.nappy.service.cv;
 
 import com.history.nappy.domain.cv.CV;
-import com.history.nappy.domain.cv.CVImg;
+import com.history.nappy.domain.cv.personalInfo.CVImg;
 import com.history.nappy.dto.cv.CVFormDto;
 import com.history.nappy.repository.cv.*;
 import com.history.nappy.repository.cv.details.CVDetailsRepository;

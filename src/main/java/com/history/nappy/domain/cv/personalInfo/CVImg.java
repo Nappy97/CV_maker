@@ -1,4 +1,4 @@
-package com.history.nappy.domain.cv;
+package com.history.nappy.domain.cv.personalInfo;
 
 import com.history.nappy.domain.BaseEntity;
 import lombok.Getter;

@@ -1,8 +1,8 @@
-package com.history.nappy.domain.cv;
+package com.history.nappy.domain.cv.personalInfo;
 
 import com.history.nappy.domain.BaseEntity;
 import com.history.nappy.domain.member.Member;
-import com.history.nappy.dto.cv.CVPersonalInfoDto;
+import com.history.nappy.dto.cv.personalInfo.CVPersonalInfoDto;
 import lombok.Getter;
 import lombok.Setter;
 

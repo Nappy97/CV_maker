@@ -1,7 +1,6 @@
 package com.history.nappy.repository.cv.details;
 
-import com.history.nappy.domain.cv.CVDetails;
-import com.history.nappy.domain.cv.QCVAboutProject;
+import com.history.nappy.domain.cv.details.CVDetails;
 import com.history.nappy.domain.cv.QCVDetails;
 import com.history.nappy.dto.cv.CVSearchDto;
 import com.querydsl.core.QueryResults;

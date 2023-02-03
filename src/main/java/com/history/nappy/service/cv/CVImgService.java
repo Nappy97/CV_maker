@@ -1,6 +1,6 @@
 package com.history.nappy.service.cv;
 
-import com.history.nappy.domain.cv.CVImg;
+import com.history.nappy.domain.cv.personalInfo.CVImg;
 import com.history.nappy.repository.cv.CVImgRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;

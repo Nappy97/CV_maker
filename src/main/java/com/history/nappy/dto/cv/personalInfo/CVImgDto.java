@@ -1,6 +1,5 @@
-package com.history.nappy.dto.cv;
+package com.history.nappy.dto.cv.personalInfo;
 
-import com.history.nappy.domain.cv.CVImg;
 import lombok.Getter;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
