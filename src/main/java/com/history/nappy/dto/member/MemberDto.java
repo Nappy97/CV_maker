@@ -8,6 +8,7 @@ import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDateTime;
 
 public class MemberDto {
 
@@ -44,6 +45,16 @@ public class MemberDto {
 
         private String detailAddress;
 
+        private LocalDateTime educatedStart;
+
+        private LocalDateTime educatedEnd;
+
+        private String schoolName;
+
+        private String major;
+
+        private String graduationStatus;
+
         private Role role;
 
         public void encryptPassword(String BCryptPassword) {
@@ -61,6 +72,10 @@ public class MemberDto {
                     .address(address)
                     .detailAddress(detailAddress)
                     .name(name)
+                    .educatedStart(educatedStart)
+                    .educatedEnd(educatedEnd)
+                    .major(major)
+                    .graduationStatus(graduationStatus)
                     .role(Role.USER)
                     .build();
 

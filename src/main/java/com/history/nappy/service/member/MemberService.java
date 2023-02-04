@@ -87,7 +87,8 @@ public class MemberService {
         Member memberEntity = memberRepository.findById(member.getId()).orElseThrow(() -> new IllegalArgumentException("해당 회원이 없습니다. id=" + member.getId()));
         memberEntity.update(bCryptPasswordEncoder.encode(member.getPassword()), member.getNickname(),
                 member.getName(), member.getZipcode(), member.getAddress(), member.getDetailAddress(),
-                member.getEmail());
+                member.getEmail(), member.getEducatedStart(), member.getEducatedEnd(), member.getSchoolName(),
+                member.getMajor(), member.getGraduationStatus());
         principalDetail.setMember(memberEntity);
         return memberEntity.getId();
     }
@@ -96,7 +97,9 @@ public class MemberService {
     public Long updateOauth(Member member, @AuthenticationPrincipal PrincipalDetail principalDetail) {
         Member memberEntity = memberRepository.findById(member.getId()).orElseThrow(() -> new IllegalArgumentException("해당 회원이 없습니다. id=" + member.getId()));
         memberEntity.updateOauth(member.getNickname(), member.getName(), member.getZipcode(),
-                member.getAddress(), member.getDetailAddress());
+                member.getAddress(), member.getDetailAddress(),member.getEducatedStart(),
+                member.getEducatedEnd(), member.getSchoolName(),
+                member.getMajor(), member.getGraduationStatus());
         principalDetail.setMember(memberEntity);
         return memberEntity.getId();
     }

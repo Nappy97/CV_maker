@@ -1,4 +1,4 @@
-package com.history.nappy.repository.cv;
+package com.history.nappy.repository.cv.personalInfo;
 
 import com.history.nappy.domain.cv.personalInfo.CVPersonalInfo;
 import org.springframework.data.jpa.repository.JpaRepository;

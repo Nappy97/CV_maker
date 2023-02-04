@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.modelmapper.ModelMapper;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,6 +23,9 @@ public class CVPersonalInfoDto {
     private String graduationStatus;
 
     private static ModelMapper modelMapper = new ModelMapper();
+
+    private List<CVImgDto> cvImgDtoList = new ArrayList<>();
+    private List<Long> cvImgIds = new ArrayList<>();
 
     // DTO -> Entity
     public CVPersonalInfo createCVPersonalInfo() {

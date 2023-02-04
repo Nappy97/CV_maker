@@ -4,6 +4,7 @@ import com.history.nappy.domain.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table
@@ -52,6 +53,22 @@ public class Member extends BaseTimeEntity {
     @Column
     private String providerId;
 
+    // 학력
+    @Column
+    private LocalDateTime educatedStart;
+
+    @Column
+    private LocalDateTime educatedEnd;
+
+    @Column
+    private String schoolName;
+
+    @Column
+    private String major;
+
+    @Column
+    private String graduationStatus;
+
     // 권한
     public String getRoleKey(){
         return this.role.getKey();
@@ -63,7 +80,10 @@ public class Member extends BaseTimeEntity {
     }
 
     // 회원수정 메소드
-    public Member update(String password, String nickname, String name, int zipcode, String address, String detailAddress, String email) {
+    public Member update(String password, String nickname, String name, int zipcode,
+                         String address, String detailAddress, String email,
+                         LocalDateTime educatedStart, LocalDateTime educatedEnd,
+                         String schoolName, String major, String graduationStatus) {
         this.password = password;
         this.nickname = nickname;
         this.name = name;
@@ -71,16 +91,28 @@ public class Member extends BaseTimeEntity {
         this.address = address;
         this.detailAddress = detailAddress;
         this.email = email;
+        this.educatedStart = educatedStart;
+        this.educatedEnd = educatedEnd;
+        this.schoolName = schoolName;
+        this.major = major;
+        this.graduationStatus = graduationStatus;
         return this;
     }
 
     // oauth 회원수정
-    public Member updateOauth(String nickname, String name, int zipcode, String address, String detailAddress){
+    public Member updateOauth(String nickname, String name, int zipcode, String address, String detailAddress,
+                              LocalDateTime educatedStart, LocalDateTime educatedEnd,
+                              String schoolName, String major, String graduationStatus){
         this.nickname = nickname;
         this.name = name;
         this.zipcode = zipcode;
         this.address = address;
         this.detailAddress = detailAddress;
+        this.educatedStart = educatedStart;
+        this.educatedEnd = educatedEnd;
+        this.schoolName = schoolName;
+        this.major = major;
+        this.graduationStatus = graduationStatus;
         return this;
     }
 }

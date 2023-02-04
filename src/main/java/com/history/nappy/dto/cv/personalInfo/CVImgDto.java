@@ -1,5 +1,6 @@
 package com.history.nappy.dto.cv.personalInfo;
 
+import com.history.nappy.domain.cv.personalInfo.CVImg;
 import lombok.Getter;
 import lombok.Setter;
 import org.modelmapper.ModelMapper;
@@ -17,7 +18,7 @@ public class CVImgDto {
     private static ModelMapper modelMapper = new ModelMapper();
 
     // Entity -> DTO
-//    public static CVImgDto of(CVImg cvImg) {
-//        return modelMapper.map(cvImg, CVImgDto.modelMapper);
-//    }
+    public static CVImgDto of(CVImg cvImg) {
+        return modelMapper.map(cvImg, CVImgDto.class);
+    }
 }
