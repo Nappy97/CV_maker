@@ -3,9 +3,12 @@ package com.history.nappy.service.member;
 import com.history.nappy.config.auth.PrincipalDetail;
 import com.history.nappy.domain.member.Member;
 import com.history.nappy.dto.member.MemberDto;
+import com.history.nappy.dto.member.MemberInfoDto;
 import com.history.nappy.repository.member.MemberRepository;
+import com.querydsl.core.QueryResults;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -97,11 +100,21 @@ public class MemberService {
     public Long updateOauth(Member member, @AuthenticationPrincipal PrincipalDetail principalDetail) {
         Member memberEntity = memberRepository.findById(member.getId()).orElseThrow(() -> new IllegalArgumentException("해당 회원이 없습니다. id=" + member.getId()));
         memberEntity.updateOauth(member.getNickname(), member.getName(), member.getZipcode(),
-                member.getAddress(), member.getDetailAddress(),member.getEducatedStart(),
+                member.getAddress(), member.getDetailAddress(), member.getEducatedStart(),
                 member.getEducatedEnd(), member.getSchoolName(),
                 member.getMajor(), member.getGraduationStatus());
         principalDetail.setMember(memberEntity);
         return memberEntity.getId();
+    }
+
+    // CV용
+    @Transactional(readOnly = true)
+    public MemberInfoDto getMainMember(String username) {
+
+        Member member = memberRepository.findByUsername(username);
+
+        MemberInfoDto memberInfoDto = memberRepository.findMemberInfoDto(member.getId());
+        return memberInfoDto;
     }
 }
 

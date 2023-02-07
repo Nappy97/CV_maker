@@ -10,7 +10,6 @@ import com.history.nappy.repository.cv.personalInfo.CVPersonalInfoRepository;
 import com.history.nappy.repository.cv.projectList.CVAboutProjectRepository;
 import com.history.nappy.repository.cv.skills.CVSkillsRepository;
 import com.history.nappy.repository.member.MemberRepository;
-import com.history.nappy.service.cv.personalInfo.CVImgService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,25 +29,5 @@ public class CVService {
     private final CVImgRepository cvImgRepository;
     private final CVPersonalInfoRepository cvPersonalInfoRepository;
     private final CVSkillsRepository cvSkillsRepository;
-    private final CVImgService cvImgService;
-
-    public Long saveCV(CVFormDto cvFormDto, List<MultipartFile> cvImgFileList) throws Exception{
-
-        CV cv = cvFormDto.createCV();
-        cvRepository.save(cv);
-
-        // 이미지 등록
-        for (int i = 0; i<cvImgFileList.size(); i++){
-            CVImg cvImg = new CVImg();
-            cvImg.setCv(cv);
-            if (i == 0){
-                cvImg.setRepimgYn("Y");
-            } else {
-                cvImg.setRepimgYn("N");
-            }
-            cvImgService.saveCVImg(cvImg, cvImgFileList.get(i));
-        }
-        return cv.getId();
-    }
 
 }
