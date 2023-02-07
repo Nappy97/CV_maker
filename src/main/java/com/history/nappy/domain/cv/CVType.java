@@ -7,5 +7,5 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum CVType {
 
-    Main, SUB
+    MAIN, SUB
 }

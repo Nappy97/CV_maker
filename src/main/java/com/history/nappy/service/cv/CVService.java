@@ -1,12 +1,9 @@
 package com.history.nappy.service.cv;
 
 import com.history.nappy.domain.cv.CV;
-import com.history.nappy.domain.cv.personalInfo.CVImg;
 import com.history.nappy.dto.cv.CVFormDto;
 import com.history.nappy.repository.cv.*;
 import com.history.nappy.repository.cv.details.CVDetailsRepository;
-import com.history.nappy.repository.cv.personalInfo.CVImgRepository;
-import com.history.nappy.repository.cv.personalInfo.CVPersonalInfoRepository;
 import com.history.nappy.repository.cv.projectList.CVAboutProjectRepository;
 import com.history.nappy.repository.cv.skills.CVSkillsRepository;
 import com.history.nappy.repository.member.MemberRepository;
@@ -26,8 +23,6 @@ public class CVService {
     private final CVDetailsRepository cvDetailsRepository;
     private final MemberRepository memberRepository;
     private final CVAboutProjectRepository cvAboutProjectRepository;
-    private final CVImgRepository cvImgRepository;
-    private final CVPersonalInfoRepository cvPersonalInfoRepository;
     private final CVSkillsRepository cvSkillsRepository;
 
 }

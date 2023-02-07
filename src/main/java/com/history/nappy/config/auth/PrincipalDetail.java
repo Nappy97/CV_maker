@@ -1,11 +1,13 @@
 package com.history.nappy.config.auth;
 
 import com.history.nappy.domain.member.Member;
+import com.history.nappy.domain.member.MemberImg;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
@@ -14,7 +16,7 @@ import java.util.Map;
 public class PrincipalDetail implements UserDetails, OAuth2User {
 
     private Member member;
-
+    private MemberImg memberImg;
     private Map<String, Object> attributes;
 
     // 일반사용자
@@ -84,6 +86,31 @@ public class PrincipalDetail implements UserDetails, OAuth2User {
 
     public String getDetailAddress() {
         return member.getDetailAddress();
+    }
+
+    // 학력
+    public LocalDateTime getEducatedStart(){
+        return member.getEducatedStart();
+    }
+
+    public LocalDateTime getEducatedEnd(){
+        return member.getEducatedEnd();
+    }
+
+    public String getSchoolName(){
+        return member.getSchoolName();
+    }
+
+    public String getMajor(){
+        return member.getSchoolName();
+    }
+
+    public String getGraduationStatus(){
+        return member.getGraduationStatus();
+    }
+
+    public String getImgUrl(){
+        return memberImg.getImgUrl();
     }
 
     //계정이 만료되었는지 (true: 만료되지 않음)
