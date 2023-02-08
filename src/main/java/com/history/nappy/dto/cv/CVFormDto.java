@@ -15,16 +15,14 @@ public class CVFormDto {
 
     private Long id;
 
-    private Member member;
+    private Long memberId;
 
-    @NotBlank(message = "이름을 입력해주세요!")
-    private String name;
+    private Long cvAboutProjectId;
 
-    private CVType cvType;
+    private Long cvDetailsId;
 
-    private static ModelMapper modelMapper = new ModelMapper();
+    private Long cvSkillsId;
 
-    public CV createCV() {
-        return modelMapper.map(this, CV.class);
-    }
+    private String title;
+
 }

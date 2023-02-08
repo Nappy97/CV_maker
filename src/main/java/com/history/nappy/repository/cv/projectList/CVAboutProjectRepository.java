@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface CVAboutProjectRepository extends JpaRepository<CVAboutProject, Long>, CVAboutProjectCustom {
 
-//    CVAboutProject findByCvAboutProjectListId(Long cvAboutProjectListId);
+//    CVAboutProject findByCvAboutProjectListIdAndId(Long cvAboutProjectListId, Long id);
 
     @Query("select new com.history.nappy.dto.cv.aboutProject.CVAboutProjectListDto(" +
             "ap.id, ap.title, ap.intro, ap.startedDate, ap.completionDate, ap.numOfMembers," +
@@ -19,5 +19,6 @@ public interface CVAboutProjectRepository extends JpaRepository<CVAboutProject, 
             "where ap.cvAboutProjectList.id = :cvAboutProjectListId " +
             "order by ap.createdDate desc")
     List<CVAboutProjectListDto> findCVAboutProjectListDto(@Param("cvAboutProjectListId") Long cvAboutProjectListId);
+
 
 }
