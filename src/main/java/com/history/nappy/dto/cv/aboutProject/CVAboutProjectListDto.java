@@ -1,5 +1,6 @@
 package com.history.nappy.dto.cv.aboutProject;
 
+import com.history.nappy.domain.cv.aboutProject.CVAboutProjectList;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +10,6 @@ import java.time.LocalDateTime;
 @Setter
 public class CVAboutProjectListDto {
 
-    private Long cvAboutProjectId;
     private String title;
     private String intro;
     private LocalDateTime startedDate;
@@ -19,17 +19,14 @@ public class CVAboutProjectListDto {
     private String takeaway;
     private String references;
 
-    public CVAboutProjectListDto(Long cvAboutProjectId, String title, String intro,
-                                 LocalDateTime startedDate, LocalDateTime completionDate, int numOfMembers,
-                                 String content, String takeaway, String references) {
-        this.cvAboutProjectId = cvAboutProjectId;
-        this.title = title;
-        this.intro = intro;
-        this.startedDate = startedDate;
-        this.completionDate = completionDate;
-        this.numOfMembers = numOfMembers;
-        this.content = content;
-        this.takeaway = takeaway;
-        this.references = references;
+    public CVAboutProjectListDto(CVAboutProjectList cvAboutProjectList) {
+        this.title = cvAboutProjectList.getCvAboutProject().getTitle();
+        this.intro = cvAboutProjectList.getCvAboutProject().getIntro();
+        this.startedDate = cvAboutProjectList.getCvAboutProject().getStartedDate();
+        this.completionDate = cvAboutProjectList.getCvAboutProject().getCompletionDate();
+        this.numOfMembers = cvAboutProjectList.getCvAboutProject().getNumOfMembers();
+        this.content = cvAboutProjectList.getCvAboutProject().getContent();
+        this.takeaway = cvAboutProjectList.getCvAboutProject().getTakeaway();
+        this.references = cvAboutProjectList.getCvAboutProject().getReferences();
     }
 }

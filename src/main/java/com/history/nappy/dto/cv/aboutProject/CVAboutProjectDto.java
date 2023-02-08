@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 public class CVAboutProjectDto {
 
     private String title;
+    private Member member;
     private String intro;
     private LocalDateTime startedDate;
     private LocalDateTime completionDate;
@@ -22,32 +23,16 @@ public class CVAboutProjectDto {
     private String takeaway;
     private String references;
 
-//    private static ModelMapper modelMapper = new ModelMapper();
-//
-//    // DTO -> Entity
-//    public CVAboutProject createCVAboutProject() {
-//        return modelMapper.map(this, CVAboutProject.class);
-//    }
-//
-//    // Entity -> DTO
-//    public static CVAboutProjectDto of(CVAboutProject cvAboutProject) {
-//        return modelMapper.map(cvAboutProject, CVAboutProjectDto.class);
-//    }
-//
-//    @QueryProjection
-//    public CVAboutProjectDto(Long id, Member member, String title, String intro,
-//                             LocalDateTime startedDate, LocalDateTime completionDate,
-//                             int numOfMembers, String content, String takeaway,
-//                             String references){
-//        this.id = id;
-//        this.member = member;
-//        this.title = title;
-//        this.intro = intro;
-//        this.startedDate = startedDate;
-//        this.completionDate = completionDate;
-//        this.numOfMembers = numOfMembers;
-//        this.content = content;
-//        this.takeaway = takeaway;
-//        this.references = references;
-//    }
+    private static ModelMapper modelMapper = new ModelMapper();
+
+    // DTO -> Entity
+    public CVAboutProject createCVAboutProject() {
+        return modelMapper.map(this, CVAboutProject.class);
+    }
+
+    // Entity -> DTO
+    public static CVAboutProjectDto of(CVAboutProject cvAboutProject) {
+        return modelMapper.map(cvAboutProject, CVAboutProjectDto.class);
+    }
+
 }
