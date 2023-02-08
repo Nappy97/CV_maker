@@ -19,18 +19,23 @@ public class CVSkills extends BaseEntity {
     @Column(name = "cv_skills_id")
     private Long id;
 
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "cv_skills_list_id")
+//    private CVSkillsList cvSkillsList;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cv_skills_list_id")
-    private CVSkillsList cvSkillsList;
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     private String type;
 
     private String name;    // 스킬이름
 
-    public static CVSkills createCVSkills(CVSkillsList cvSkillsList,
+    public static CVSkills createCVSkills(Member member,
                                           String type, String name) {
         CVSkills cvSkills = new CVSkills();
-        cvSkills.setCvSkillsList(cvSkillsList);
+//        cvSkills.setCvSkillsList(cvSkillsList);
+        cvSkills.setMember(member);
         cvSkills.setType(type);
         cvSkills.setName(name);
         return cvSkills;

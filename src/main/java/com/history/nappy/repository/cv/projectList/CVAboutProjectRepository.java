@@ -16,9 +16,9 @@ public interface CVAboutProjectRepository extends JpaRepository<CVAboutProject, 
             "ap.id, ap.title, ap.intro, ap.startedDate, ap.completionDate, ap.numOfMembers," +
             "ap.content, ap.takeaway, ap.references ) " +
             "from CVAboutProject ap " +
-            "where ap.cvAboutProjectList.id = :cvAboutProjectListId " +
+            "where ap.createdBy = :username " +
             "order by ap.createdDate desc")
-    List<CVAboutProjectListDto> findCVAboutProjectListDto(@Param("cvAboutProjectListId") Long cvAboutProjectListId);
+    List<CVAboutProjectListDto> findCVAboutProjectListDto(@Param("username") String username);
 
 
 }

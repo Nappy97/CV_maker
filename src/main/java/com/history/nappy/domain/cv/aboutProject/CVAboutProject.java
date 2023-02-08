@@ -22,9 +22,13 @@ public class CVAboutProject extends BaseEntity {
     @Column(name = "cv_about_project_id")
     private Long id;
 
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "cv_about_project_list_id")
+//    private CVAboutProjectList cvAboutProjectList;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "cv_about_project_list_id")
-    private CVAboutProjectList cvAboutProjectList;
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @Column(nullable = false, length = 100)
     private String title;   // 프로젝트명
@@ -49,12 +53,13 @@ public class CVAboutProject extends BaseEntity {
     @Lob
     private String references;  // 참고자료
 
-    public static CVAboutProject createCVAboutProject(CVAboutProjectList cvAboutProjectList,
+    public static CVAboutProject createCVAboutProject(Member member,
                                                       String title, String intro, LocalDateTime startedDate,
                                                       LocalDateTime completionDate, int numOfMembers,
                                                       String content, String takeaway, String references) {
         CVAboutProject cvAboutProject = new CVAboutProject();
-        cvAboutProject.setCvAboutProjectList(cvAboutProjectList);;
+//        cvAboutProject.setCvAboutProjectList(cvAboutProjectList);
+        cvAboutProject.setMember(member);
         cvAboutProject.setTitle(title);
         cvAboutProject.setIntro(intro);
         cvAboutProject.setStartedDate(startedDate);

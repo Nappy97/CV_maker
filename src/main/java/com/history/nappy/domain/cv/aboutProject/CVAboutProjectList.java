@@ -1,6 +1,7 @@
 package com.history.nappy.domain.cv.aboutProject;
 
 import com.history.nappy.domain.BaseEntity;
+import com.history.nappy.domain.cv.CVContent;
 import com.history.nappy.domain.member.Member;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,13 +19,18 @@ public class CVAboutProjectList extends BaseEntity {
     @Column(name = "cv_about_project_list_id")
     private Long id;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cv_about_project_id")
+    private CVAboutProject cvAboutProject;
 
-    public static CVAboutProjectList createCVAboutProjectList(Member member) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cv_content_id")
+    private CVContent cvContent;
+
+    public static CVAboutProjectList createCVAboutProjectList(CVAboutProject cvAboutProject) {
         CVAboutProjectList cvAboutProjectList = new CVAboutProjectList();
-        cvAboutProjectList.setMember(member);
+        cvAboutProjectList.setCvAboutProject(cvAboutProject);
+//        cvAboutProjectList.setCvContent(cvContent);
         return cvAboutProjectList;
     }
 }

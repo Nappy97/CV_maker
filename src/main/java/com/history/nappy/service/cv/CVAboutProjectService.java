@@ -58,7 +58,7 @@ public class CVAboutProjectService {
             return cvAboutProjectListDtos;
         }
 
-        cvAboutProjectListDtos = cvAboutProjectRepository.findCVAboutProjectListDto(cvAboutProjectList.getId());
+        cvAboutProjectListDtos = cvAboutProjectRepository.findCVAboutProjectListDto(member.getUsername());
         return cvAboutProjectListDtos;
     }
 
