@@ -1,5 +1,6 @@
 package com.history.nappy.dto.cv.details;
 
+import com.history.nappy.domain.cv.details.CVDetailsList;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,13 +8,11 @@ import lombok.Setter;
 @Setter
 public class CVDetailsListDto {
 
-    private Long cvDetailsId;
     private String title;
     private String content;
 
-    public CVDetailsListDto(Long cvDetailsId, String title, String content) {
-        this.cvDetailsId = cvDetailsId;
-        this.title = title;
-        this.content = content;
+    public CVDetailsListDto(CVDetailsList cvDetailsList) {
+        this.title = cvDetailsList.getCvDetails().getTitle();
+        this.content = cvDetailsList.getCvDetails().getContent();
     }
 }

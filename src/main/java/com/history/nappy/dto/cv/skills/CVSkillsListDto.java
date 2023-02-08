@@ -1,5 +1,6 @@
 package com.history.nappy.dto.cv.skills;
 
+import com.history.nappy.domain.cv.skills.CVSkillsList;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,13 +8,11 @@ import lombok.Setter;
 @Setter
 public class CVSkillsListDto {
 
-    private Long cvSkillsId;
     private String type;
     private String name;
 
-    public CVSkillsListDto(Long cvSkillsId, String type, String name) {
-        this.cvSkillsId = cvSkillsId;
-        this.type = type;
-        this.name = name;
+    public CVSkillsListDto(CVSkillsList cvSkillsList) {
+        this.type = cvSkillsList.getCvSkills().getType();
+        this.name = cvSkillsList.getCvSkills().getName();
     }
 }
