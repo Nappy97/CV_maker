@@ -27,8 +27,9 @@ public class CVDetailsList extends BaseEntity {
     @JoinColumn(name = "cv_content_id")
     private CVContent cvContent;
 
-    public static CVDetailsList createCVDetailsList(CVDetails cvDetails) {
+    public static CVDetailsList createCVDetailsList(CVContent cvContent, CVDetails cvDetails) {
         CVDetailsList cvDetailsList = new CVDetailsList();
+        cvDetailsList.setCvContent(cvContent);
         cvDetailsList.setCvDetails(cvDetails);
 //        cvDetailsList.setMember(member);
         return cvDetailsList;

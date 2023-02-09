@@ -27,10 +27,10 @@ public class CVAboutProjectList extends BaseEntity {
     @JoinColumn(name = "cv_content_id")
     private CVContent cvContent;
 
-    public static CVAboutProjectList createCVAboutProjectList(CVAboutProject cvAboutProject) {
+    public static CVAboutProjectList createCVAboutProjectList(CVContent cvContent, CVAboutProject cvAboutProject) {
         CVAboutProjectList cvAboutProjectList = new CVAboutProjectList();
+        cvAboutProjectList.setCvContent(cvContent);
         cvAboutProjectList.setCvAboutProject(cvAboutProject);
-//        cvAboutProjectList.setCvContent(cvContent);
         return cvAboutProjectList;
     }
 }

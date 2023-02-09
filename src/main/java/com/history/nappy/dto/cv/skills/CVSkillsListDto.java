@@ -8,11 +8,5 @@ import lombok.Setter;
 @Setter
 public class CVSkillsListDto {
 
-    private String type;
-    private String name;
-
-    public CVSkillsListDto(CVSkillsList cvSkillsList) {
-        this.type = cvSkillsList.getCvSkills().getType();
-        this.name = cvSkillsList.getCvSkills().getName();
-    }
+    private Long cvSkillsId;
 }

@@ -8,11 +8,6 @@ import lombok.Setter;
 @Setter
 public class CVDetailsListDto {
 
-    private String title;
-    private String content;
+    private Long cvDetailsId;
 
-    public CVDetailsListDto(CVDetailsList cvDetailsList) {
-        this.title = cvDetailsList.getCvDetails().getTitle();
-        this.content = cvDetailsList.getCvDetails().getContent();
-    }
 }

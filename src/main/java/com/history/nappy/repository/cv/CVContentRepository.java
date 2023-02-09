@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface CVContentRepository extends JpaRepository<CVContent, Long> {
 
+    CVContent findByMemberId(Long memberId);
+
     CVContent findByCvIdAndMemberId(Long cvId, Long memberId);
 
     CVContent findByIdAndCvAboutProjectId(Long id, Long cvAboutProjectId);
@@ -12,4 +14,6 @@ public interface CVContentRepository extends JpaRepository<CVContent, Long> {
     CVContent findByIdAndCvDetailsId(Long id, Long cvDetailsId);
 
     CVContent findByIdAndCvSkillsId(Long id, Long cvSkillsId);
+
+
 }
