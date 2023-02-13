@@ -1,6 +1,5 @@
 package com.history.nappy.service.cv;
 
-import com.history.nappy.domain.cv.CV;
 import com.history.nappy.domain.cv.CVContent;
 import com.history.nappy.domain.cv.aboutProject.CVAboutProject;
 import com.history.nappy.domain.cv.aboutProject.CVAboutProjectList;
@@ -10,7 +9,6 @@ import com.history.nappy.domain.cv.skills.CVSkills;
 import com.history.nappy.domain.cv.skills.CVSkillsList;
 import com.history.nappy.domain.member.Member;
 import com.history.nappy.dto.cv.CVContentDto;
-import com.history.nappy.dto.cv.CVContentListDto;
 import com.history.nappy.dto.cv.aboutProject.CVAboutProjectListDto;
 import com.history.nappy.dto.cv.aboutProject.CVContentAboutProjectDto;
 import com.history.nappy.dto.cv.details.CVContentDetailsDto;

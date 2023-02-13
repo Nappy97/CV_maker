@@ -2,7 +2,6 @@ package com.history.nappy.domain.cv.details;
 
 import com.history.nappy.domain.BaseEntity;
 import com.history.nappy.domain.cv.CVContent;
-import com.history.nappy.domain.member.Member;
 import lombok.Getter;
 import lombok.Setter;
 

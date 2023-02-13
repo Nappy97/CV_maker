@@ -30,7 +30,7 @@ public class Board extends BaseEntity {
     private int count;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "memberId")
+    @JoinColumn(name = "member_id")
     private Member member;
 
     @OrderBy("id desc")
